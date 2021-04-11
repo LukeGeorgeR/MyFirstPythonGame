@@ -6,7 +6,7 @@ import game_functions as gf
 from pygame.sprite import Group
 from alien import Alien
 from game_stats import GameStats
-
+from button import Button
 
 def run_game():
     """ This Function initialises the Alien Invasion Game by importing all the preferences.!"""
@@ -16,6 +16,9 @@ def run_game():
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
+
+    # Make a Play Button
+    play_button = Button(ai_settings, screen, "Play")
 
     # Create an instance to store game statistics
     stats = GameStats(ai_settings)
@@ -37,7 +40,7 @@ def run_game():
             gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
             gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
         # Updating the screen !
-        gf.update_screen(ai_settings, screen, ship, aliens, bullets)  # updating the screen with required settings
+        gf.update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button)  # updating the screen with required settings
 
 
 # Running the Game.
