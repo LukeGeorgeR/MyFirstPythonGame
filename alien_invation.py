@@ -31,10 +31,11 @@ def run_game():
         # Checking for keyboard and mouse events
         gf.check_events(ai_settings, screen, ship, bullets)
 
-        # Updating the position of the Ship
-        ship.update()
-        gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
-        gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
+        if stats.game_active:
+            # Updating the position of the Ship
+            ship.update()
+            gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
+            gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
         # Updating the screen !
         gf.update_screen(ai_settings, screen, ship, aliens, bullets)  # updating the screen with required settings
 
