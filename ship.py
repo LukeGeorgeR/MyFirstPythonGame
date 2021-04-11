@@ -34,4 +34,6 @@ class Ship:
         # update rect object from self.center
         # self.rect.centerx = self.center
 
-
+    def ship_center(self):
+        """ Center the ship on the screen ."""
+        self.center = self.screen_rect.centerx
