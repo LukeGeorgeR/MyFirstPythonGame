@@ -6,6 +6,7 @@ import game_functions as gf
 from pygame.sprite import Group
 from alien import Alien
 
+
 def run_game():
     """ This Function initialises the Alien Invasion Game by importing all the preferences.!"""
 
@@ -20,7 +21,7 @@ def run_game():
     bullets = Group()
     aliens = Group()
     # Create a fleet of aliens
-    gf.create_fleet(ai_settings, screen, aliens)
+    gf.create_fleet(ai_settings, screen, ship, aliens)
 
     while True:
         # Checking for keyboard and mouse events
@@ -28,7 +29,8 @@ def run_game():
 
         # Updating the position of the Ship
         ship.update()
-        gf.update_bullets(bullets)
+        gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
+        gf.update_aliens(ai_settings, ship, aliens)
         # Updating the screen !
         gf.update_screen(ai_settings, screen, ship, aliens, bullets)  # updating the screen with required settings
 
